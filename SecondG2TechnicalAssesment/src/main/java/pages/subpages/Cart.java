@@ -10,10 +10,10 @@ public class Cart extends BasePage {
     private final By newAddressButton = By.className("add-address");
     private final By cityDropDown = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[1]/div[1]/select");
     private final By districtDropDown = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[1]/div[2]/select");
-    private final By streetNameTextField = By.xpath("//*[@formcontrolname='streeName']");
-    private final By buildingNoTextField = By.xpath("//*[@formcontrolname='buildingNo']");
-    private final By floorNoTextField = By.xpath("//*[@formcontrolname='floorNo']");
-    private final By apartmentNoTextField = By.xpath("//*[@formcontrolname='Apartment No.']");
+    private final By streetNameTextField = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[2]/div/input");
+    private final By buildingNoTextField = By.xpath("//input[@formcontrolname='buildingNo']");
+    private final By floorNoTextField = By.xpath("//input[@formcontrolname='floorNo']");
+    private final By apartmentNoTextField = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[3]/div[3]/input");
 
     public void clickOnCartButton() throws InterruptedException {
         Thread.sleep(3000);
@@ -38,15 +38,16 @@ public class Cart extends BasePage {
 
     public void chooseCity() {
         Select select = new Select(waitUntilElementIsClickable(cityDropDown));
-        select.deselectByIndex(2);
+        select.selectByIndex(2);
     }
 
     public void chooseDistrict() {
         Select select = new Select(waitUntilElementIsClickable(districtDropDown));
-        select.deselectByIndex(2);
+        select.selectByIndex(2);
     }
 
     public void enterStreetName(String name) {
+
         waitUntilElementIsClickable(streetNameTextField).sendKeys(name);
 
     }

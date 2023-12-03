@@ -20,7 +20,7 @@ import static java.lang.Thread.sleep;
 public class Products extends BasePage {
 
     private final By categoryTab = By.xpath("/html/body/vf-root/main/section[2]/vf-product-list-page/div[2]/div[2]/div[2]/div[8]");
-    private final By item = By.cssSelector("body > vf-root > main > section.vf-modules-container-fluid > vf-product-list-page > div.product-list-container.vf-grid-wrap.vf-grid-wrap > div.productList-main-page.vf-grid-9 > div.product-cards.vf-grid-wrap.vf-grid-wrap-start > vf-product-box-featured:nth-child(1) > div > div.img-container > img");
+        private final By item = By.xpath("/html/body/vf-root/main/section[2]/vf-product-list-page/div/div[2]/div[4]/vf-product-box-featured[2]/div/div[3]/div/div[1]/p");
     private final By blackColor = By.xpath("/html/body/vf-root/main/section[2]/vf-middleware/vf-product-details-page/div[2]/div/div/div[1]/div[3]/div[3]/div/div/button[1]");
     private final By blueColor = By.xpath("/html/body/vf-root/main/section[2]/vf-middleware/vf-product-details-page/div[2]/div/div/div[1]/div[3]/div[3]/div/div/button[2]");
     private final By addToCartButton = By.xpath("/html/body/vf-root/main/section[2]/vf-middleware/vf-product-details-page/div[2]/div/div/div[1]/div[3]/div[8]/button[1]");
@@ -32,23 +32,9 @@ public class Products extends BasePage {
     }
 
     public void clickOnItem() throws InterruptedException {
-
-
-        List<WebElement> options = driver.findElements(By.xpath("/html/body/vf-root/main/section[2]/vf-product-list-page/div[2]/div[2]/div[2]"));
-//        for (WebElement option : options) {
-//
-//            if (option.findElement(By.tagName("div")).getText().contains(" Oppo ")) {
-//                option.click();
-//                break;
-//            }
-//        }
-
-  String name = driver.findElement(By.xpath("//*[@id='mainText']")).getText();
+        String name = driver.findElement(By.xpath("/html/body/vf-root/main/section[2]/vf-product-list-page/div/div[2]/div[4]/vf-product-box-featured[2]/div/div[3]/div/div[1]/p")).getText();
         System.out.println(name);
-
-
-       waitUntilElementIsClickable(item)
-        .click();
+        waitUntilElementIsClickable(item).click();
 
 
     }

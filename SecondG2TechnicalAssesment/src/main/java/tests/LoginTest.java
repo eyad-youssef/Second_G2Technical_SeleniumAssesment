@@ -41,6 +41,7 @@ public class LoginTest extends BaseTest {
         browser.eshop.cart.clickOnNewAddressButton();
         browser.eshop.cart.chooseCity();
         browser.eshop.cart.chooseDistrict();
+        Thread.sleep(1000);
         browser.eshop.cart.enterStreetName("main ST");
         browser.eshop.cart.enterBuildingNo("abcdefg");
         browser.eshop.cart.enterFloorNo("efghjpg");
