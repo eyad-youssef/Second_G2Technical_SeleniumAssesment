@@ -13,9 +13,9 @@ import java.util.regex.Pattern;
 
 public class WaitUtil {
 
-    final static int waitTime = 50 ;
+    final static int waitTime = 100 ;
 
-    public WebElement waitUntilElementIsPresence(By by){
+    public WebElement waitUntilElementIsPresent(By by){
         return new WebDriverWait(WebDriverSingleton.getWebDriver(),
                 Duration.ofSeconds(waitTime)).until(ExpectedConditions.presenceOfElementLocated(by));
     }

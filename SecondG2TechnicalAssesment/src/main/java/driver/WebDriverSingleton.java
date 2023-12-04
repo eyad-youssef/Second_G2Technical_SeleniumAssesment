@@ -1,9 +1,6 @@
 package driver;
 
 
-
-//import io.github.bonigarcia.wdm.WebDriverManager;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -26,16 +23,11 @@ public class WebDriverSingleton {
 
     private void setDriverCapabilities() {
 
-        EdgeOptions options = new EdgeOptions();
-//        options.addArguments("user-data-dir=C:/Users/AbdAllahE2/AppData/Local/Google/Chrome/User Data");
-        options.setAcceptInsecureCerts(true);
-        options.addArguments("--remote-allow-origins=*");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-popup-blocking");
         options.addArguments("start-maximized");
         options.addArguments("disable-infobars");
-//        options.addArguments("--disable-extensions");
-//        options.addArguments("--enable-javascript");
-
-        webDriver = new EdgeDriver(options);
+        webDriver = new ChromeDriver(options);
     }
 
     public static WebDriver getWebDriver() {
@@ -47,16 +39,6 @@ public class WebDriverSingleton {
 
 
     }
-
-//    public void signin() throws InterruptedException {
-////        Thread.sleep(300);
-//        webDriver.findElement(By.xpath("//input[@type='email']")).sendKeys("eyad.abdallah@vodafone.com");
-//        webDriver.findElement(By.xpath("//*[@id='idSIButton9']")).click();
-//        webDriver.findElement(By.xpath("//*[@id='i0118']")).sendKeys("`hj_HGw,hvd_35");
-//        webDriver.findElement(By.xpath("//*[@id=\"idSIButton9\"]")).click();
-//        webDriver.findElement(By.xpath("//*[@id=\"idSIButton9\"]")).click();
-//    }
-
 
     public void refreshCurrentUrl() {
         webDriver.navigate().refresh();

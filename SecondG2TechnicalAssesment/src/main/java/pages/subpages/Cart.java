@@ -5,15 +5,22 @@ import org.openqa.selenium.support.ui.Select;
 import pages.BasePage;
 
 public class Cart extends BasePage {
-    private final By cartButton = By.className("cart-btn");
+    private final By cartButton = By.cssSelector(".cart-btn");
     private final By checkoutButton = By.className("checkout-btn");
     private final By newAddressButton = By.className("add-address");
     private final By cityDropDown = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[1]/div[1]/select");
     private final By districtDropDown = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[1]/div[2]/select");
     private final By streetNameTextField = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[2]/div/input");
     private final By buildingNoTextField = By.xpath("//input[@formcontrolname='buildingNo']");
+
     private final By floorNoTextField = By.xpath("//input[@formcontrolname='floorNo']");
     private final By apartmentNoTextField = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[3]/div[3]/input");
+    private final By buildingNoErrorHint = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[3]/div[1]/p");
+    private final By floorNoErrorHint = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[3]/div[1]/p");
+    private final By apartmentNoErrorHint = By.xpath("/html/body/vf-root/main/section[2]/vf-home/section/vf-shipping/section/div[2]/div/div/div[1]/div/form/div[3]/div[1]/p");
+    private final By saveAddressButton= By.cssSelector(".btn-primary delievry--btn--checkout");
+
+
 
     public void clickOnCartButton() throws InterruptedException {
         Thread.sleep(3000);
@@ -50,6 +57,7 @@ public class Cart extends BasePage {
 
         waitUntilElementIsClickable(streetNameTextField).sendKeys(name);
 
+
     }
 
     public void enterBuildingNo(String name) {
@@ -66,6 +74,20 @@ public class Cart extends BasePage {
         waitUntilElementIsClickable(apartmentNoTextField).sendKeys(name);
 
     }
+ public String getBuildingNoErrorHint(){
+   return   waitUntilElementIsPresent(buildingNoErrorHint).getText();
+ }
 
+    public String getFloorNoErrorHint(){
+        return   waitUntilElementIsPresent(floorNoErrorHint).getText();
+    }
+
+    public String getApartmentNoErrorHint(){
+        return   waitUntilElementIsPresent(apartmentNoErrorHint).getText();
+    }
+
+    public String getSaveAddressButtonStatus(){
+      return waitUntilElementIsPresent(saveAddressButton).getAttribute("disabled") ;
+    }
 
 }
